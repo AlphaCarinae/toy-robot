@@ -63,7 +63,7 @@ REPORT
 
 Output: `0,1,NORTH`
 
-b)
+- b)
 
 ```
 PLACE 0,0,NORTH
@@ -85,3 +85,21 @@ REPORT
 ```
 
 Output: `3,3,NORTH`
+
+## Solution
+
+The details of how I have tackled this problem has been detailed here.
+
+### The Premise
+
+- There is a 5 by 5 board, and a robot will receive instructions to be `PLACE`ed using board coordinates (`X,Y`) plus direction (`NORTH`, `SOUTH`, `EAST` or `WEST`) the robot will be facing or a directional `MOVE`. any instruction that can cause it to get out of the 5x5 board should not execute
+- The most south western point on the board is considered the origin (0,0)
+- `MOVE` will move the robot one square forward (in the current direction)
+- `LEFT` will turn the robot's direction 90 degrees counter-clockwise
+- `RIGHT` will turn the robot's direction 90 degrees clockwise
+- direction change instructions can be given only after a `PLACE` instruction has been given after the application is run (after robot is first placed on the board)
+- The application needs to have a user interface, after running the main file as described later the application needs to communicate with the end-user through text interface
+- End-user should be informed that the application is running and provide a help at the beginning and on request (optional)
+- End-user should receive an error message if the entered instruction can not be comprehended or executed, preferably with instructions on how to fix it (optional)
+- after an instruction has been received and run successfully the end-user should be notified of the result by entering `REPORT` command
+- an error or the inability to execute an instruction should not stall the program from running
