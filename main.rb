@@ -1,17 +1,25 @@
-require_relative 'board'
-require_relative 'robot'
 require_relative 'executor'
 
-print "Welcome to Toy Robot Simulator\n"
-print "Valid instructions are listed below\n"
-print "PLACE X,Y,F\n"
-print "MOVE\n"
-print "LEFT\n"
-print "RIGHT\n"
-print "REPORT\n"
-print "EXIT\n\n"
+puts "Welcome to Toy Robot Simulator"
+puts "Valid instructions are listed below"
+puts "PLACE X,Y,F"
+puts "MOVE"
+puts "LEFT"
+puts "RIGHT"
+puts "REPORT"
+puts "EXIT\n"
 
-Executor.new.execute
+executor = Executor.new
 
-print "Exiting Toy Robot Simulator\n"
+while executor.instruction != 'EXIT'
+  print "Enter instruction: "
+
+  instruction = gets.chomp.upcase
+
+  output = executor.execute(instruction)
+
+  puts output unless output.empty?
+end
+
+puts "Exiting Toy Robot Simulator"
 exit(0)
