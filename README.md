@@ -103,6 +103,7 @@ The details of how I have tackled this problem has been detailed here.
 - End-user should receive an error message if the entered instruction can not be comprehended or executed, preferably with instructions on how to fix it (optional)
 - after an instruction has been received and run successfully the end-user should be notified of the result by entering `REPORT` command
 - an error or the inability to execute an instruction should not stall the program from running
+- provided tests should be added as automated tests
 
 ### The approach
 
@@ -110,6 +111,12 @@ The details of how I have tackled this problem has been detailed here.
 
 - We put together a `Robot` class, as soon as the `PLACE` direction is given for the first time we initialize an instance of this `ROBOT` class
 - We also put together a `Board` class, this will be initialized as soon as the application starts with an *empty* board
-- The `Robot` instance will hold info about where the robot is at any given point in time, and will respond to `REPORT` command
-- The `Board` instance will hold info on the robot's direction, and will respond to `LEFT`, `RIGHT` and `MOVE` instructions
-- 
+- The `Board` instance will hold info about where the robot is at any given point in time, and will respond to `REPORT` command
+- The `Robot` instance will hold info on the robot's direction, and will respond to `LEFT`, `RIGHT`, `PLACE` and `MOVE` instructions
+
+#### Steps
+- communicate valid instructions
+- initialize the board
+- skip instructions until a `PLACE` command is enetered
+- initialize the robot and apply the new `PLACE` (location)
+- iterate through instructions and apply if valid based on constraints
