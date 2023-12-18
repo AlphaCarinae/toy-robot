@@ -17,6 +17,8 @@ class Executor
     when /^PLACE\s(\d),(\d),(NORTH|SOUTH|EAST|WEST)$/
       x = $1.to_i
       y = $2.to_i
+      return output if @toy_board.valid_location?(x, y) == false
+
       direction = $3.downcase.to_sym
 
       @robot = Robot.new(direction, toy_board)

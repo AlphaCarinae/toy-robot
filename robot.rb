@@ -40,7 +40,7 @@ class Robot
   end
 
   def place(x, y, new_direction)
-    return if (x < 0 || x > Board::MAX_INDEX || y < 0 || y > Board::MAX_INDEX)
+    return unless @board.valid_location?(x,y)
 
     @board.x = x
     @board.y = y
