@@ -9,11 +9,11 @@ class Robot
   def move
     case @direction
     when :north
-      @board.y += 1 if (@board.y < Board::SIZE)
+      @board.y += 1 if (@board.y < Board::MAX_INDEX)
     when :south
       @board.y -= 1 if (@board.y > 0)
     when :east
-      @board.x += 1 if (@board.x < Board::SIZE)
+      @board.x += 1 if (@board.x < Board::MAX_INDEX)
     when :west
       @board.x -= 1 if (@board.x > 0)
     end
@@ -40,7 +40,7 @@ class Robot
   end
 
   def place(x, y, new_direction)
-    return if (x < 0 || x > Board::SIZE || y < 0 || y > Board::SIZE)
+    return if (x < 0 || x > Board::MAX_INDEX || y < 0 || y > Board::MAX_INDEX)
 
     @board.x = x
     @board.y = y

@@ -1,5 +1,5 @@
 class Board
-  SIZE = 5
+  MAX_INDEX = 4 # 0..4
   attr_accessor :x, :y
 
   def initialize

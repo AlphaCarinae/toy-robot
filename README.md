@@ -120,3 +120,7 @@ The details of how I have tackled this problem has been detailed here.
 - skip instructions until a `PLACE` command is enetered
 - initialize the robot and apply the new `PLACE` (location)
 - iterate through instructions and apply if valid based on constraints
+
+#### How to use
+
+open a terminal and run `ruby main.rb` and follow the instructions.

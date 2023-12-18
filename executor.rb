@@ -1,0 +1,39 @@
+class Executor
+  attr_accessor :instruction, :toy_board, :robot
+
+  def initialize(instruction = '')
+    @instruction = instruction
+    @toy_board = Board.new
+  end
+
+  def execute
+    while instruction != 'EXIT'
+      # grab the first instruction
+
+      print "Enter instruction: "
+      instruction = gets.chomp.upcase
+
+      case instruction
+      when /^PLACE\s(\d),(\d),(NORTH|SOUTH|EAST|WEST)$/
+        x = $1.to_i
+        y = $2.to_i
+        direction = $3.downcase.to_sym
+
+        robot = Robot.new(direction, toy_board)
+        robot.place(x, y, direction)
+      when 'LEFT'
+        robot.turn_left if robot
+      when 'RIGHT'
+        robot.turn_right if robot
+      when 'MOVE'
+        robot.move if robot
+      when 'REPORT'
+        print "Output: #{toy_board.x},#{toy_board.y},#{robot.direction.upcase}\n" if robot
+      when 'EXIT'
+        # do nothing
+      else
+        print "Invalid instruction\n"
+      end
+    end
+  end
+end
