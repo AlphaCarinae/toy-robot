@@ -9,20 +9,41 @@ class Robot
   def move
     case @direction
     when :north
-      @board.y += 1 if (y < BOARD::SIZE)
+      @board.y += 1 if (@board.y < Board::SIZE)
     when :south
-      @board.y -= 1 if (y > 0)
+      @board.y -= 1 if (@board.y > 0)
     when :east
-      @board.x += 1 if (x < BOARD::SIZE)
+      @board.x += 1 if (@board.x < Board::SIZE)
     when :west
-      @board.x -= 1 if (x > 0)
+      @board.x -= 1 if (@board.x > 0)
     end
   end
 
-  def place(x, y)
-    return if (x < 0 || x > BOARD::SIZE || y < 0 || y > BOARD::SIZE)
+  def turn_left
+    change_table = {
+      north: :west,
+      west: :south,
+      south: :east,
+      east: :north
+    }
+    @direction = change_table[@direction]
+  end
+
+  def turn_right
+    change_table = {
+      north: :east,
+      east: :south,
+      south: :west,
+      west: :north
+    }
+    @direction = change_table[@direction]
+  end
+
+  def place(x, y, new_direction)
+    return if (x < 0 || x > Board::SIZE || y < 0 || y > Board::SIZE)
 
     @board.x = x
     @board.y = y
+    @direction = new_direction
   end
 end

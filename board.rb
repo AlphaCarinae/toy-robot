@@ -1,6 +1,6 @@
 class Board
   SIZE = 5
-  attr_reader :x, :y
+  attr_accessor :x, :y
 
   def initialize
     @x = 0
